@@ -1,3 +1,86 @@
+/* Estilos para el encabezado */
+header {
+  text-align: center;
+  background-color: #005CA9;
+  color: white;
+  padding: 20px;
+}
+
+/* Estilos para el contenedor de los partidos */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+/* Estilos para cada partido */
+.party {
+  width: 200px;
+  margin: 20px;
+  text-align: center;
+}
+
+.party img {
+  width: 100%;
+  height: auto;
+}
+
+.vote-info {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.vote-count {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.vote-percentage {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.vote-button {
+  background-color: #005CA9;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.vote-button:hover {
+  background-color: #003C75;
+}
+
+/* Estilos para el pie de página */
+footer {
+  background-color: #005CA9;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* Estilos para el texto de la franja */
+footer span {
+  display: inline-block;
+  padding: 5px;
+  background-color: blue;
+  color: white;
+  font-weight: bold;
+}
+
 /* Estilos generales */
 body {
   margin: 0;
@@ -5,193 +88,3 @@ body {
   padding-bottom: 40px; /* añadir un padding para evitar que el contenido quede oculto por el pie de página */
 }
 
-/* Estilos del encabezado */
-header {
-  background-color: #4CAF50;
-  color: white;
-  padding: 20px;
-}
-
-header h1 {
-  margin: 0;
-}
-
-/* Estilos del contenido */
-.content {
-  margin: 20px;
-}
-
-.partido {
-  display: flex;
-  margin: 20px 0;
-  align-items: center;
-}
-
-.partido label {
-  flex-grow: 1;
-  margin-right: 20px;
-}
-
-.partido button {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-}
-
-.partido button:hover {
-  background-color: #3e8e41;
-}
-
-/* Estilos del pie de página */
-footer {
-  background-color: #333;
-  color: white;
-  text-align: center;
-  padding: 20px;
-}
-footer a {
-  color: white;
-}
-
-/* Estilos para la sección de resultados */
-.resultados {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  margin-top: 20px;
-}
-
-.resultados h2 {
-  width: 100%;
-  text-align: center;
-  margin-top: 0;
-}
-
-.resultados .partido {
-  width: 150px;
-  margin-bottom: 20px;
-  padding: 10px;
-  background-color: #f1f1f1;
-  border-radius: 5px;
-  text-align: center;
-}
-
-.resultados .partido h3 {
-  margin-top: 0;
-}
-
-.resultados .partido p {
-  margin: 0;
-}
-
-.resultados .partido .count {
-  font-size: 36px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.resultados .partido .percentage {
-  font-size: 24px;
-}
-
-/* Estilos para la sección de votación */
-.votacion {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  margin-top: 20px;
-}
-
-.votacion h2 {
-  width: 100%;
-  text-align: center;
-  margin-top: 0;
-}
-
-.votacion button {
-  margin: 10px;
-  padding: 20px;
-  border-radius: 5px;
-  font-size: 24px;
-  font-weight: bold;
-  background-color: #f1f1f1;
-  color: #333;
-  cursor: pointer;
-}
-
-.votacion button:hover {
-  background-color: #333;
-  color: #fff;
-}
-
-/* Estilos para los resultados */
-.resultados {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  margin-top: 20px;
-}
-
-.resultados h2 {
-  width: 100%;
-  text-align: center;
-  margin-top: 0;
-}
-
-.resultados table {
-  border-collapse: collapse;
-  width: 80%;
-  margin: 0 auto;
-}
-
-.resultados th,
-.resultados td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: center;
-}
-
-.resultados th {
-  background-color: #4CAF50;
-  color: white;
-}
-
-.resultados tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-.resultados tr:hover {
-  background-color: #ddd;
-}
-
-.resultados td.count {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.resultados td.percentage {
-  font-size: 16px;
-  font-style: italic;
-}
-
-/* Estilos para el pie de página */
-footer {
-  background-color: #333;
-  color: white;
-  padding: 20px;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}
-
-footer a {
-  color: white;
-}
-
-footer p {
-  margin: 0;
-  text-align: center;
-  font-size: 14px;
-}
