@@ -1,89 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Elecciones 2023</title>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="script.js"></script>
-  <link rel="stylesheet" href="styles.css">
+	<meta charset="UTF-8">
+	<title>Encuesta de partidos políticos</title>
+	<link rel="stylesheet" href="style.css">
+	<script type="text/javascript" src="script.js"></script>
 </head>
 <body>
-  <header>
-    <h1>Elecciones 2023</h1>
-    <p>Selecciona tu partido favorito</p>
-  </header>
-
-  <div class="container">
-    <div class="party">
-      <h2>Morena</h2>
-      <img src="https://via.placeholder.com/150x150.png?text=Morena" alt="Logo de Morena">
-      <div class="vote-info">
-        <div class="vote-count" id="morena-count">0</div>
-        <div class="vote-percentage" id="morena-percentage">0%</div>
-        <button class="vote-button" onclick="vote('morena')">Votar</button>
-      </div>
-    </div>
-
-    <div class="party">
-      <h2>Verde</h2>
-      <img src="https://via.placeholder.com/150x150.png?text=Verde" alt="Logo del Partido Verde">
-      <div class="vote-info">
-        <div class="vote-count" id="verde-count">0</div>
-        <div class="vote-percentage" id="verde-percentage">0%</div>
-        <button class="vote-button" onclick="vote('verde')">Votar</button>
-      </div>
-    </div>
-
-    <div class="party">
-      <h2>PRI</h2>
-      <img src="https://via.placeholder.com/150x150.png?text=PRI" alt="Logo del PRI">
-      <div class="vote-info">
-        <div class="vote-count" id="pri-count">0</div>
-        <div class="vote-percentage" id="pri-percentage">0%</div>
-        <button class="vote-button" onclick="vote('pri')">Votar</button>
-      </div>
-    </div>
-
-    <div class="party">
-      <h2>PAN</h2>
-      <img src="https://via.placeholder.com/150x150.png?text=PAN" alt="Logo del PAN">
-      <div class="vote-info">
-        <div class="vote-count" id="pan-count">0</div>
-        <div class="vote-percentage" id="pan-percentage">0%</div>
-        <button class="vote-button" onclick="vote('pan')">Votar</button>
-      </div>
-    </div>
-
-    <div class="party">
-      <h2>PSI</h2>
-      <img src="https://via.placeholder.com/150x150.png?text=PSI" alt="Logo del PSI">
-      <div class="vote-info">
-        <div class="vote-count" id="psi-count">0</div>
-        <div class="vote-percentage" id="psi-percentage">0%</div>
-        <button class="vote-button" onclick="vote('psi')">Votar</button>
-      </div>
-    </div>
-  </div>
-
-  <footer>
-    <p>
-	        </div><!-- fin del div.container -->
-
-  </main><!-- fin de main -->
-
-  <footer>
-    <p>Made with <span>&#10084;</span> by John Doe</p>
-  </footer>
-
-</div><!-- fin del div.wrapper -->
-
-<!-- Script de jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<!-- Script personalizado -->
-<script src="js/script.js"></script>
-
- </body>
+	<header>
+		<h1>Encuesta de Partidos Políticos</h1>
+	</header>
+	<main>
+		<div class="container">
+			<div class="party">
+				<img src="https://i.ibb.co/p1Fyc0w/512px-Morena-logo-alt-svg.png" alt="Morena">
+				<div class="vote-info">
+					<div class="vote-count" id="morena-count">0</div>
+					<div class="vote-percentage" id="morena-percentage">0%</div>
+					<button class="vote-button" onclick="vote('morena')">Votar</button>
+				</div>
+			</div>
+			<div class="party">
+				<img src="https://i.ibb.co/zF1pCNx/1200px-Logo-Partido-Verde-M-xico-svg.png" alt="Partido Verde">
+				<div class="vote-info">
+					<div class="vote-count" id="verde-count">0</div>
+					<div class="vote-percentage" id="verde-percentage">0%</div>
+					<button class="vote-button" onclick="vote('verde')">Votar</button>
+				</div>
+			</div>
+			<div class="party">
+				<img src="https://i.ibb.co/LS42fLD/1022px-PRI-logo-Mexico-svg.png" alt="PRI">
+				<div class="vote-info">
+					<div class="vote-count" id="pri-count">0</div>
+					<div class="vote-percentage" id="pri-percentage">0%</div>
+					<button class="vote-button" onclick="vote('pri')">Votar</button>
+				</div>
+			</div>
+			<div class="party">
+				<img src="https://i.ibb.co/0CYjTYQ/PAN-logo-Mexico-svg.png" alt="PAN">
+				<div class="vote-info">
+					<div class="vote-count" id="pan-count">0</div>
+					<div class="vote-percentage" id="pan-percentage">0%</div>
+					<button class="vote-button" onclick="vote('pan')">Votar</button>
+				</div>
+			</div>
+			<div class="party">
+				<img src="https://i.ibb.co/D70D27C/1200px-PSI-logo-svg.png" alt="PSI">
+				<div class="vote-info">
+					<div class="vote-count" id="psi-count">0</div>
+					<div class="vote-percentage" id="psi-percentage">0%</div>
+					<button class="vote-button" onclick="vote('psi')">Votar</button>
+				</div>
+			</div>
+		</div>
+	</main>
+	<footer>
+		<p style="border-top: 1px solid #0072c6; padding-top: 10px;">Encuesta de partidos políticos &copy; 2023</p>
+	</footer>
+</body>
 </html>
 
 
