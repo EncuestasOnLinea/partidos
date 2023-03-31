@@ -1,74 +1,54 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="UTF-8">
-	<title>Elecciones</title>
-	<link rel="stylesheet" href="styles.css">
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
-<body>
-	<header>
-		<h1>Elecciones Presidenciales</h1>
-		<p>Elige tu candidato y vota</p>
-	</header>
-
-	<div class="container">
-		<div class="party">
-			<img src="morena.png" alt="MORENA">
-			<h2>MORENA</h2>
-			<div class="vote-info">
-				<p class="vote-count" id="morena-count">0</p>
-				<p class="vote-percentage" id="morena-percentage">0%</p>
-				<button class="vote-button" onclick="vote('morena')">Votar</button>
-			</div>
-		</div>
-
-		<div class="party">
-			<img src="verde.png" alt="VERDE">
-			<h2>VERDE</h2>
-			<div class="vote-info">
-				<p class="vote-count" id="verde-count">0</p>
-				<p class="vote-percentage" id="verde-percentage">0%</p>
-				<button class="vote-button" onclick="vote('verde')">Votar</button>
-			</div>
-		</div>
-
-		<div class="party">
-			<img src="pri.png" alt="PRI">
-			<h2>PRI</h2>
-			<div class="vote-info">
-				<p class="vote-count" id="pri-count">0</p>
-				<p class="vote-percentage" id="pri-percentage">0%</p>
-				<button class="vote-button" onclick="vote('pri')">Votar</button>
-			</div>
-		</div>
-
-		<div class="party">
-			<img src="pan.png" alt="PAN">
-			<h2>PAN</h2>
-			<div class="vote-info">
-				<p class="vote-count" id="pan-count">0</p>
-				<p class="vote-percentage" id="pan-percentage">0%</p>
-				<button class="vote-button" onclick="vote('pan')">Votar</button>
-			</div>
-		</div>
-
-		<div class="party">
-			<img src="psi.png" alt="PSI">
-			<h2>PSI</h2>
-			<div class="vote-info">
-				<p class="vote-count" id="psi-count">0</p>
-				<p class="vote-percentage" id="psi-percentage">0%</p>
-				<button class="vote-button" onclick="vote('psi')">Votar</button>
-			</div>
-		</div>
-	</div>
-
-	<footer>
-		<p>Resultados actualizados <span id="time"></span></p>
-	</footer>
-
-	<script src="script.js"></script>
-</body>
+  <head>
+    <title>Elecciones</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Incluir la hoja de estilo CSS personalizada -->
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>Elecciones</h1>
+    <p>Por favor, vote por su partido favorito:</p>
+    <div class="partidos">
+      <div class="partido morena">
+        <img src="https://via.placeholder.com/150x150?text=MORENA" alt="MORENA">
+        <button onclick="vote('morena')">Votar</button>
+        <p>Votos: <span id="morena-count">0</span></p>
+        <p>Porcentaje: <span id="morena-percentage">0%</span></p>
+      </div>
+      <div class="partido verde">
+        <img src="https://via.placeholder.com/150x150?text=VERDE" alt="VERDE">
+        <button onclick="vote('verde')">Votar</button>
+        <p>Votos: <span id="verde-count">0</span></p>
+        <p>Porcentaje: <span id="verde-percentage">0%</span></p>
+      </div>
+      <div class="partido pri">
+        <img src="https://via.placeholder.com/150x150?text=PRI" alt="PRI">
+        <button onclick="vote('pri')">Votar</button>
+        <p>Votos: <span id="pri-count">0</span></p>
+        <p>Porcentaje: <span id="pri-percentage">0%</span></p>
+      </div>
+      <div class="partido pan">
+        <img src="https://via.placeholder.com/150x150?text=PAN" alt="PAN">
+        <button onclick="vote('pan')">Votar</button>
+        <p>Votos: <span id="pan-count">0</span></p>
+        <p>Porcentaje: <span id="pan-percentage">0%</span></p>
+      </div>
+      <div class="partido psi">
+        <img src="https://via.placeholder.com/150x150?text=PSI" alt="PSI">
+        <button onclick="vote('psi')">Votar</button>
+        <p>Votos: <span id="psi-count">0</span></p>
+        <p>Porcentaje: <span id="psi-percentage">0%</span></p>
+      </div>
+    </div>
+    <!-- Incluir la versión alojada de jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Incluir el archivo de JavaScript personalizado -->
+    <script src="script.js"></script>
+  </body>
 </html>
+
+		
+		
 
