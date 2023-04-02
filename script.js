@@ -1,55 +1,55 @@
-// Establecer variables de configuración
-const server = 'fluoz.zeno.fm';
-const port = 80;
+const startButton = document.getElementById('startButton');
+const stopButton = document.getElementById('stopButton');
+const volumeSlider = document.getElementById('volumeSlider');
+
+const serverAddress = 'fluoz.zeno.fm';
+const port = '80';
 const mountPoint = 'n932reythxhvv/source';
 const username = 'source';
 const password = 'eenWG5kW';
-const encoding = 'MP3';
+const encoding = 'mp3';
 
-// Obtener elementos del DOM
-const volumeSlider = document.getElementById('volumeSlider');
-const startButton = document.getElementById('startButton');
-const stopButton = document.getElementById('stopButton');
+let mediaRecorder;
+let recordedChunks = [];
+let audioStream;
 
-// Establecer el contexto de audio
-const audioCtx = new AudioContext();
-const source = audioCtx.createBufferSource();
-const gainNode = audioCtx.createGain();
-const analyser = audioCtx.createAnalyser();
+startButton.addEventListener('click', async () => {
+  try {
+    audioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    mediaRecorder = new MediaRecorder(audioStream, { mimeType: `audio/${encoding}` });
 
-// Conectar el nodo de ganancia y el analizador al contexto de audio
-source.connect(gainNode);
-gainNode.connect(analyser);
-analyser.connect(audioCtx.destination);
+    mediaRecorder.addEventListener('dataavailable', event => {
+      if (event.data.size > 0) {
+        recordedChunks.push(event.data);
+      }
+    });
 
-// Establecer la configuración de la solicitud de Icecast
-const icecastURL = `http://${server}:${port}/${mountPoint}`;
-const icecastRequest = new Request(icecastURL, {
-  method: 'PUT',
-  headers: {
-    'Authorization': `Basic ${btoa(`${username}:${password}`)}`,
-    'Content-Type': `audio/${encoding}`,
-  },
+    mediaRecorder.addEventListener('stop', () => {
+      const audioBlob = new Blob(recordedChunks, { type: `audio/${encoding}` });
+      const audioUrl = URL.createObjectURL(audioBlob);
+
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', `http://${serverAddress}:${port}/${mountPoint}`);
+      xhr.setRequestHeader('Authorization', `Basic ${btoa(`${username}:${password}`)}`);
+      xhr.send(audioBlob);
+
+      recordedChunks = [];
+      URL.revokeObjectURL(audioUrl);
+    });
+
+    mediaRecorder.start();
+    startButton.disabled = true;
+    stopButton.disabled = false;
+    volumeSlider.disabled = true;
+  } catch (err) {
+    console.error(err);
+  }
 });
 
-// Iniciar la transmisión de audio
-startButton.addEventListener('click', () => {
-  navigator.mediaDevices.getUserMedia({audio: true})
-    .then((stream) => {
-      const audioSource = audioCtx.createMediaStreamSource(stream);
-      audioSource.connect(gainNode);
-      startButton.disabled = true;
-      stopButton.disabled = false;
-      return audioCtx.resume();
-    })
-    .then(() => fetch(icecastRequest))
-    .catch((err) => console.error('Error:', err));
-});
-
-// Detener la transmisión de audio
 stopButton.addEventListener('click', () => {
-  gainNode.gain.value = 0;
+  mediaRecorder.stop();
   startButton.disabled = false;
   stopButton.disabled = true;
-  fetch(icecastURL, {method: 'DELETE'});
+  volumeSlider.disabled = false;
+  audioStream.getTracks().forEach(track => track.stop());
 });
