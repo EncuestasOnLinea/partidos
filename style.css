@@ -86,5 +86,3 @@ input[type=range]:focus::-webkit-slider-thumb {
 input[type=range]:focus::-moz-range-thumb {
   background: #2e7d32;
 }
-
-
