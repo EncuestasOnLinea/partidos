@@ -1,90 +1,90 @@
-/* Estilos para el encabezado */
-header {
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
   text-align: center;
-  background-color: #005CA9;
-  color: white;
+  margin-top: 30px;
+}
+
+.container {
+  max-width: 500px;
+  margin: 0 auto;
   padding: 20px;
 }
 
-/* Estilos para el contenedor de los partidos */
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 50px;
-}
-
-/* Estilos para cada partido */
-.party {
-  width: 200px;
-  margin: 20px;
+p {
   text-align: center;
 }
 
-.party img {
-  width: 100%;
-  height: auto;
-}
-
-.vote-info {
-  display: flex;
-  flex-direction: column;
-  margin-top: 10px;
-}
-
-.vote-count {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.vote-percentage {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-.vote-button {
-  background-color: #005CA9;
-  color: white;
+button {
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 10px 20px;
   border: none;
+  background-color: #2e7d32;
+  color: #fff;
   border-radius: 5px;
-  padding: 10px;
   cursor: pointer;
 }
 
-.vote-button:hover {
-  background-color: #003C75;
+button:disabled {
+  background-color: gray;
+  cursor: not-allowed;
 }
 
-/* Estilos para el pie de página */
-footer {
-  background-color: #005CA9;
-  color: white;
-  padding: 10px;
-  text-align: center;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
+label {
+  margin-right: 10px;
 }
 
-footer p {
-  margin: 0;
+input[type=range] {
+  display: block;
+  margin: 0 auto;
+  width: 80%;
 }
 
-/* Estilos para el texto de la franja */
-footer span {
-  display: inline-block;
-  padding: 5px;
-  background-color: blue;
-  color: white;
-  font-weight: bold;
+input[type=range]:focus {
+  outline: none;
 }
 
-/* Estilos generales */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  padding-bottom: 40px; /* añadir un padding para evitar que el contenido quede oculto por el pie de página */
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #ccc;
 }
+
+input[type=range]:focus::-ms-fill-lower {
+  background: #ccc;
+}
+
+input[type=range]:focus::-ms-fill-upper {
+  background: #ccc;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  background: #2e7d32;
+  margin-top: -8px;
+  border-radius: 50%;
+}
+
+input[type=range]::-moz-range-thumb {
+  height: 20px;
+  width: 20px;
+  background: #2e7d32;
+  border: none;
+  border-radius: 50%;
+}
+
+input[type=range]:focus::-webkit-slider-thumb {
+  background: #2e7d32;
+}
+
+input[type=range]:focus::-moz-range-thumb {
+  background: #2e7d32;
+}
+
 
