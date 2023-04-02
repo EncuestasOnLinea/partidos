@@ -30,6 +30,8 @@ recorder.setDestination(destination);
 // Habilitar/deshabilitar botones
 toggleButtons(false, true);
 
+let icecast; // Declarar variable icecast fuera de la función startButton click event handler
+
 // Agregar un controlador de eventos al botón de encendido
 startButton.addEventListener('click', () => {
   // Habilitar/deshabilitar botones
@@ -58,9 +60,9 @@ startButton.addEventListener('click', () => {
       audioElement.autoplay = true;
       document.body.appendChild(audioElement);
       audioElement.play();
-      
+
       // Crear un objeto ICEcast y establecer las credenciales de acceso
-      const icecast = new Icecast({
+      icecast = new Icecast({
         server: serverAddress,
         port: serverPort,
         mount: mountPoint,
@@ -96,46 +98,9 @@ stopButton.addEventListener('click', () => {
   // Detener la transmisión
   icecast.on('end', () => {
     icecast.disconnect();
+    // Remover el objeto de audio del DOM
+    audioElement.parentNode.removeChild(audioElement);
+    // Habilitar/deshabilitar botones
+    toggleButtons(true, false);
   });
 });
-
-// Agregar un controlador de eventos al control deslizante de volumen
-volumeSlider.addEventListener('input', function(e) {
-// Establecer el volumen del objeto de audio en función del valor del control deslizante
-audioElement.volume = e.target.value;
-});
-
-// Agregar un controlador de eventos al botón "Encender"
-startButton.addEventListener('click', function() {
-// Habilitar/deshabilitar botones
-toggleButtons(false, true);
-
-// Obtener la secuencia de audio del servidor
-var streamUrl = 'http://' + serverAddress + ':' + serverPort + '/' + mountPoint;
-
-// Configurar el objeto de audio con la secuencia de audio
-audioElement.src = streamUrl;
-audioElement.type = 'audio/' + encoding;
-
-// Autenticar con el servidor
-var authString = btoa(username + ':' + password);
-audioElement.setRequestHeader('Authorization', 'Basic ' + authString);
-
-// Comenzar a reproducir la secuencia de audio
-audioElement.play();
-});
-
-// Agregar un controlador de eventos al botón "Apagar"
-stopButton.addEventListener('click', function() {
-// Habilitar/deshabilitar botones
-toggleButtons(true, false);
-
-// Detener la reproducción de la secuencia de audio
-audioElement.pause();
-});
-
-// Función para habilitar/deshabilitar los botones de "Encender" y "Apagar"
-function toggleButtons(start, stop) {
-startButton.disabled = !start;
-stopButton.disabled = !stop;
-}
