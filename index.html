@@ -2,18 +2,21 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Transmitir audio en vivo</title>
+    <title>Transmisión de audio en vivo</title>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <h1>Transmitir audio en vivo desde tu dispositivo móvil</h1>
-    <p>Habilita el micrófono de tu dispositivo y usa los controles para ajustar el volumen y comenzar a transmitir en vivo.</p>
-    <div>
-      <input type="range" min="0" max="1" step="0.01" value="0.5" id="volumeSlider">
-      <label for="volumeSlider">Volumen:</label>
+    <div class="container">
+      <h1>Transmisión de audio en vivo</h1>
+      <p>Permite que el sitio web acceda a tu micrófono y usa los controles para ajustar el volumen y comenzar a transmitir en vivo.</p>
+      <div class="controls">
+        <label for="volumeSlider">Volumen:</label>
+        <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.5">
+        <button id="startButton">Iniciar transmisión</button>
+        <button id="stopButton" disabled detener transmisión</button>
+      </div>
+      <audio id="audio" controls></audio>
     </div>
-    <button id="startButton">Encender</button>
-    <button id="stopButton" disabled>Apagar</button>
-    <script src="icecast.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
