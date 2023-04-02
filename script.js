@@ -1,44 +1,79 @@
-// Obtener los resultados almacenados en el local storage, o crear un objeto vacío si no hay resultados previos
-var resultados = JSON.parse(localStorage.getItem("resultados")) || {
-  morena: { votos: 0, porcentaje: 0 },
-  verde: { votos: 0, porcentaje: 0 },
-  pri: { votos: 0, porcentaje: 0 },
-  pan: { votos: 0, porcentaje: 0 },
-  psi: { votos: 0, porcentaje: 0 }
-};
+const startButton = document.getElementById('startButton');
+const stopButton = document.getElementById('stopButton');
+const volumeSlider = document.getElementById('volumeSlider');
+const audioContext = new AudioContext();
+const icecastUrl = 'http://fluoz.zeno.fm:80/n932reythxhvv/source';
 
-// Función para actualizar los recuentos de votos y porcentajes
-function actualizarResultados() {
-  // Obtener el número total de votos
-  var totalVotos = Object.values(resultados).reduce(function(total, partido) {
-    return total + partido.votos;
-  }, 0);
+let mediaRecorder;
+let audioChunks = [];
+let sourceNode;
+let gainNode;
+let audioStream;
 
-  // Actualizar los recuentos de votos y porcentajes para cada partido
-  $.each(resultados, function(partido, datos) {
-    var votos = datos.votos;
-    var porcentaje = (votos / totalVotos * 100).toFixed(2) + "%";
-    $("#" + partido + "-count").text(votos);
-    $("#" + partido + "-percentage").text(porcentaje);
-  });
+const constraints = { audio: true };
 
-  // Guardar los resultados actualizados en el local storage
-  localStorage.setItem("resultados", JSON.stringify(resultados));
-}
-
-// Función para votar por un partido
-function vote(partido) {
-  // Incrementar el recuento de votos para el partido correspondiente
-  resultados[partido].votos++;
-  // Actualizar los recuentos de votos y porcentajes
-  actualizarResultados();
-}
-
-// Esperar a que el documento esté listo
-$(document).ready(function() {
-  // Actualizar los recuentos de votos y porcentajes al cargar la página
-  actualizarResultados();
+startButton.addEventListener('click', () => {
+  navigator.mediaDevices.getUserMedia(constraints)
+    .then(stream => {
+      audioStream = stream;
+      startButton.disabled = true;
+      stopButton.disabled = false;
+      mediaRecorder = new MediaRecorder(stream);
+      mediaRecorder.addEventListener('dataavailable', event => {
+        audioChunks.push(event.data);
+      });
+      mediaRecorder.addEventListener('stop', () => {
+        const audioBlob = new Blob(audioChunks);
+        const audioUrl = URL.createObjectURL(audioBlob);
+        const audio = new Audio(audioUrl);
+        sourceNode = audioContext.createMediaElementSource(audio);
+        gainNode = audioContext.createGain();
+        sourceNode.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+        audio.play();
+        audioChunks = [];
+      });
+      mediaRecorder.start();
+    })
+    .catch(console.error);
 });
 
+stopButton.addEventListener('click', () => {
+  startButton.disabled = false;
+  stopButton.disabled = true;
+  mediaRecorder.stop();
+  audioStream.getTracks().forEach(track => track.stop());
+});
 
+volumeSlider.addEventListener('input', () => {
+  if (gainNode) {
+    gainNode.gain.value = volumeSlider.value;
+  }
+});
 
+function sendAudioToIcecast(audioBlob) {
+  const formData = new FormData();
+  formData.append('file', audioBlob, 'audio.mp3');
+
+  fetch(icecastUrl, {
+    method: 'PUT',
+    body: formData,
+    headers: {
+      'Authorization': 'Basic ' + btoa('source:eenWG5kW'),
+    },
+  })
+    .then(response => {
+      if (response.ok) {
+        console.log('Audio sent to Icecast successfully!');
+      } else {
+        console.error('Error sending audio to Icecast.');
+      }
+    })
+    .catch(error => {
+      console.error('Error sending audio to Icecast:', error);
+    });
+}
+
+mediaRecorder.addEventListener('dataavailable', event => {
+  sendAudioToIcecast(event.data);
+});
