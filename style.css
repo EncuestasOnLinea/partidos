@@ -1,36 +1,91 @@
-/* Estilos para dispositivos móviles */
-@media only screen and (max-width: 600px) {
-  .container {
-    max-width: 100%;
-    padding: 10px;
-  }
-  h1 {
-    font-size: 24px;
-  }
-  p {
-    font-size: 16px;
-  }
-  button {
-    font-size: 14px;
-    padding: 8px 16px;
-    margin-top: 16px;
-  }
-  input[type="range"] {
-    margin-top: 16px;
-  }
+/* Estilos para el encabezado */
+header {
+  text-align: center;
+  background-color: #005CA9;
+  color: white;
+  padding: 20px;
 }
 
-/* Estilos para tabletas */
-@media only screen and (min-width: 601px) and (max-width: 1024px) {
-  .container {
-    max-width: 800px;
-  }
+/* Estilos para el contenedor de los partidos */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 50px;
 }
 
-/* Estilos para pantallas más grandes */
-@media only screen and (min-width: 1025px) {
-  .container {
-    max-width: 1200px;
-  }
+/* Estilos para cada partido */
+.party {
+  width: 200px;
+  margin: 20px;
+  text-align: center;
 }
+
+.party img {
+  width: 100%;
+  height: auto;
+}
+
+.vote-info {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.vote-count {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.vote-percentage {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.vote-button {
+  background-color: #005CA9;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.vote-button:hover {
+  background-color: #003C75;
+}
+
+/* Estilos para el pie de página */
+footer {
+  background-color: #005CA9;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* Estilos para el texto de la franja */
+footer span {
+  display: inline-block;
+  padding: 5px;
+  background-color: blue;
+  color: white;
+  font-weight: bold;
+}
+
+/* Estilos generales */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  padding-bottom: 40px; /* añadir un padding para evitar que el contenido quede oculto por el pie de página */
+}
+
 
